@@ -7,7 +7,7 @@ This project is a web application that is used to create and manage products con
 The project contains 3 applications:
 
   - Admin Panel: A user can manage products, categories, etc.
-  - Frontend Layer: A visitor can show the products, categories, etc.
+  - Frontend Layer: A visitor can see the products, categories, etc.
   - Service Layer: Represents the products data which are added by admin. Only avaiable from frontend layer. Works as RESTfull Service.
 
 ### Admin Panel
@@ -29,6 +29,7 @@ The project contains 3 applications:
  - Product detail: Which are accessable from category detail page and search results page.
 
 ### Service Layer
+
  RESTfull principles must be considered during the service layer development. 
  - Get products: Gets all active products.
  - Get product: Gets only one product by the product id/slug.
@@ -36,7 +37,7 @@ The project contains 3 applications:
  - Get category: Gets only one category by the category id/slug.
  - Search products: Gets products by the search terms like title, etc.
 
-### Objects 
+## Objects 
 
  * Users
     * Id
@@ -70,18 +71,20 @@ This topic can be updated during the analysis and development.
 
 This applications uses a number of open source projects to work properly:
 
-* [Symfony] - Symfony is a set of reusable PHP components
-* [MySQL] - MySQL is a freely available open source Relational Database Management System (RDBMS) that uses Structured Query Language
-* [Composer]: Composer is a tool for dependency management in PHP.
-* [React] - A JavaScript library for building user interfaces
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [Docker] - Docker is a computer program that performs operating-system-level virtualization also known as containerization.
+* [Symfony] - Symfony is a set of reusable PHP components (must have)
+* [MySQL] - MySQL is a freely available open source Relational Database Management System (RDBMS) that uses Structured Query Language. (must have)
+* [Composer]: Composer is a tool for dependency management in PHP. (must have)
+* [React] - A JavaScript library for building user interfaces. (nice to have)
+* [jQuery] - jQuery is a fast, small, and feature-rich JavaScript library. (nice to have)
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps. (nice to have)
+* [Docker] - Docker is a computer program that performs operating-system-level virtualization also known as containerization. (must have)
 
 
    [Symfony]: <https://symfony.com/>
    [MySQL]: <https://www.mysql.com/>
    [Composer]: <https://getcomposer.org/>
    [React]: <https://reactjs.org/>
+   [jQuery]: <https://jquery.com/>
    [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
    [Docker]: <https://www.docker.com/>
    
