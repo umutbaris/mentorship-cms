@@ -90,9 +90,6 @@ This applications uses a number of open source projects to work properly:
    
 ### Infrastructure
 Each layer must have its own container.
-* Admin container
-* Frontend container
-* Service container
-* Nginx container
-* Database container
+* Application container (php-fpm, Nginx, etc)
+* Database container(MySQL database)
 
