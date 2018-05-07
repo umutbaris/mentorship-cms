@@ -1,0 +1,28 @@
+version: '2'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8181:81"
+    volumes:
+      - ./web:/var/www/html
+      - ./conf.d:/etc/nginx/conf.d
+    links:
+      - php
+    networks:
+      - mentorship-cms
+  php:
+    # image: php:fpm
+    build:
+      context: ./
+      dockerfile: Dockerfile-phpfpm
+    volumes:
+      - ./web:/var/www/html
+    networks:
+      - mentorship-cms
+    expose:
+      - 9000
+    # tty: true
+networks:
+  mentorship-cms:
+    driver: bridge

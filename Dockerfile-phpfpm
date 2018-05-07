@@ -1,0 +1,6 @@
+FROM php:fpm
+
+RUN apt-get update
+RUN apt-get install -y git-all
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
