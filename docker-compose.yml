@@ -2,6 +2,7 @@ version: '2'
 services:
   web:
     image: nginx
+    container_name: mentorship_cms_web
     ports:
       - "8181:81"
     volumes:
@@ -12,7 +13,8 @@ services:
     networks:
       - mentorship-cms
   php:
-    # image: php:fpm
+    container_name: mentorship_cms_php
+    #image: php:7-fpm
     build:
       context: ./
       dockerfile: Dockerfile-phpfpm
@@ -22,7 +24,30 @@ services:
       - mentorship-cms
     expose:
       - 9000
-    # tty: true
+
+  db:
+    image: mysql:5.7
+    container_name: mentorship_cms_db
+    ports:
+      - "13306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cms
+  pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: mentorship_cms_pma
+    restart: always
+    links:
+      - db
+    depends_on:
+      - db
+    ports:
+      - "8184:80"
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: root
+      PMA_ARBITRARY: 1
 networks:
   mentorship-cms:
     driver: bridge
