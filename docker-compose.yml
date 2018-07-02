@@ -22,18 +22,23 @@ services:
       - ./web:/var/www/html
     networks:
       - mentorship-cms
+    links:
+      - db
+    depends_on:
+      - db
     expose:
       - 9000
-
   db:
     image: mysql:5.7
     container_name: mentorship_cms_db
     ports:
-      - "13306:3306"
+      - "3306:3306"
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: cms
+    networks:
+      - mentorship-cms
   pma:
     image: phpmyadmin/phpmyadmin
     container_name: mentorship_cms_pma
@@ -48,6 +53,8 @@ services:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: root
       PMA_ARBITRARY: 1
+    networks:
+      - mentorship-cms
 networks:
   mentorship-cms:
     driver: bridge
