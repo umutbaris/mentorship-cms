@@ -3,140 +3,115 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface, \Serializable
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=25, unique=true)
      */
-    private $email;
+    private $username;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=64)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=254, unique=true)
      */
-    private $name;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="is_active", type="boolean")
      */
-    private $surname;
+    private $isActive;
 
-    /**
-     * @ORM\Column(type="string", length=32)
-     */
-    private $status;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $createdDate;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $updatedDate;
-
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
     }
 
-    public function getEmail(): ?string
+    public function setUsername($username)
     {
-        return $this->email;
+        $this->username = $username;
     }
 
-    public function setEmail(string $email): self
+    public function getUsername()
     {
-        $this->email = $email;
-
-        return $this;
+        return $this->username;
     }
 
-    public function getPassword(): ?string
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    public function getPassword()
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setEmail($email)
     {
-        $this->password = $password;
-
-        return $this;
+        $this->email = $email;
     }
 
-    public function getName(): ?string
+    public function getEmail()
     {
-        return $this->name;
+        return $this->email;
     }
 
-    public function setName(string $name): self
+    public function getRoles()
     {
-        $this->name = $name;
-
-        return $this;
+        return array('ROLE_USER');
     }
 
-    public function getSurname(): ?string
+    public function eraseCredentials()
     {
-        return $this->surname;
     }
 
-    public function setSurname(string $surname): self
+    /** @see \Serializable::serialize() */
+    public function serialize()
     {
-        $this->surname = $surname;
-
-        return $this;
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
     }
 
-    public function getStatus(): ?string
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
     {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    public function getCreatedDate(): ?\DateTimeInterface
-    {
-        return $this->createdDate;
-    }
-
-    public function setCreatedDate(\DateTimeInterface $createdDate): self
-    {
-        $this->createdDate = $createdDate;
-
-        return $this;
-    }
-
-    public function getUpdatedDate(): ?\DateTimeInterface
-    {
-        return $this->updatedDate;
-    }
-
-    public function setUpdatedDate(\DateTimeInterface $updatedDate): self
-    {
-        $this->updatedDate = $updatedDate;
-
-        return $this;
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized, array('allowed_classes' => false));
     }
 }
