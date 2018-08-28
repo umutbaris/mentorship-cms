@@ -4,6 +4,10 @@
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
+<<<<<<< HEAD
+=======
+        "fzaninotto/faker": "^1.7",
+>>>>>>> master
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "^4.0",
         "symfony/console": "^4.0",
@@ -25,6 +29,7 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+<<<<<<< HEAD
         "symfony/browser-kit": "^4.0",
         "symfony/css-selector": "^4.0",
         "symfony/debug-pack": "*",
@@ -32,6 +37,13 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^4.0",
         "symfony/profiler-pack": "*",
+=======
+        "symfony/debug-pack": "*",
+        "symfony/dotenv": "^4.0",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/profiler-pack": "*",
+        "symfony/test-pack": "^1.0",
+>>>>>>> master
         "symfony/web-server-bundle": "^4.0"
     },
     "config": {

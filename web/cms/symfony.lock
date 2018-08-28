@@ -71,6 +71,12 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+<<<<<<< HEAD
+=======
+    "fzaninotto/faker": {
+        "version": "v1.7.1"
+    },
+>>>>>>> master
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -81,7 +87,11 @@
         "version": "v4.0.1"
     },
     "ocramius/proxy-manager": {
+<<<<<<< HEAD
         "version": "2.2.0"
+=======
+        "version": "2.1.1"
+>>>>>>> master
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -317,6 +327,12 @@
             "ref": "3db029c03e452b4a23f7fc45cec7c922c2247eb8"
         }
     },
+<<<<<<< HEAD
+=======
+    "symfony/test-pack": {
+        "version": "v1.0.2"
+    },
+>>>>>>> master
     "symfony/translation": {
         "version": "3.3",
         "recipe": {
