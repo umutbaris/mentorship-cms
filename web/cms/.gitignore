@@ -1,9 +1,6 @@
 
 ###> symfony/framework-bundle ###
-<<<<<<< HEAD
 /.env
-=======
->>>>>>> master
 /public/bundles/
 /var/
 /vendor/

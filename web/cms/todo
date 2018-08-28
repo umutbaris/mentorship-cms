@@ -5,3 +5,5 @@
 5 - https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html
     - composer require --dev doctrine/doctrine-fixtures-bundle
     - php bin/console doctrine:fixtures:load
+6 - Install assets
+    https://symfony.com/doc/current/frontend.html
