@@ -7,3 +7,15 @@
     - php bin/console doctrine:fixtures:load
 6 - Install assets
     https://symfony.com/doc/current/frontend.html
+
+    Install
+    composer require webpack-encore
+    yarn install
+
+    Compile
+    yarn encore dev
+    or 
+    yarn encore dev --watch
+
+    Install Plugin
+    yarn add copy-webpack-plugin --dev

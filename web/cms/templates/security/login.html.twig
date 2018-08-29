@@ -5,16 +5,32 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <form class="form-signin" action="{{ path('login') }}" method="post">
+      <div class="text-center mb-4">
+        <img class="mb-4" src="{{ asset('build/img/bootstrap-solid.svg') }}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+        <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
+      </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
-        <input type="hidden" name="_target_path" value="/" />
+      <div class="form-label-group">
+        <input type="text" name="_username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputUsername">Username</label>
+      </div>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+      <div class="form-label-group">
+        <input type="password" name="_password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputPassword">Password</label>
+      </div>
 
-        <button type="submit">login</button>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+
+      <input type="hidden" name="_target_path" value="/" />
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
     </form>
 {% endblock %}
