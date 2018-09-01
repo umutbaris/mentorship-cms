@@ -32,3 +32,6 @@
 
 8 - Create new controller
 	php bin/console make:controller
+
+9 - Install faker
+    composer require fzaninotto/faker --dev
