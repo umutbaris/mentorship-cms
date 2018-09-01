@@ -8,9 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/login", name="login")
-     */
     public function login(AuthenticationUtils $authenticationUtils)
     {
         // get the login error if there is one
@@ -25,11 +22,5 @@ class SecurityController extends AbstractController
         ));
     }
 
-    /**
-     * @Route("/logout", name="logout")
-     */
-    public function logout()
-    {
-
-    }
+    public function logout(){}
 }
