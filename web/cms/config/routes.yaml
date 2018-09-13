@@ -7,4 +7,12 @@ login:
 logout:
   path: /logout  
   controller: App\Controller\SecurityController::logout
+category:
+  path: /category  
+  controller: App\Controller\CategoryController::index
+product:
+  path: /product  
+  controller: App\Controller\ProductController::index
+
+    
 
