@@ -18,7 +18,7 @@ class ProductController extends Controller
 		$manager = $this->getDoctrine()->getManager();
 		
 		$products = $manager->getRepository('App:Products')->findAll();
-		return $this->render('product/index.html.twig', [
+		return $this->render('product/index2.html.twig', [
 			'products' => $products
 		]);
 	}
