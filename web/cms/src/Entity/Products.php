@@ -34,7 +34,7 @@ class Products
     private $price;
 
     /**
-     * @ORM\Column(type="integer", length=32, nullable=true)
+     * @ORM\Column(type="string", length=32, nullable=true)
      */
     private $priceCurrency;
 
@@ -97,12 +97,12 @@ class Products
         return $this;
     }
 
-    public function getPrice(): ?integer
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(?integer $price): self
+    public function setPrice(?int $price): self
     {
         $this->price = $price;
 

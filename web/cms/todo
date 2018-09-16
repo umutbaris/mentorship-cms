@@ -1,5 +1,8 @@
 1 - php bin/console make:migration
 2 - php bin/console doctrine:migrations:migrate
+    - If you change or add new things for entities, you should run these commands:
+    php bin/console doctrine:migrations:diff
+    php bin/console doctrine:migrations:migrate
 3 - https://symfony.com/doc/master/security/csrf.html
 	composer require symfony/security-csrf
 4 - php bin/console doctrine:migrations:diff
