@@ -24,7 +24,6 @@ class ProductController extends Controller
 
 	/**
 	 * @param Request $request
-	 * @Route("/create", name="create")
 	 */
 	public function createAction(Request $request)
 	{
@@ -53,7 +52,6 @@ class ProductController extends Controller
 	 * @param Products $product
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 *
-	 * @Route("/delete/{product}", name="delete")
 	 */
 	public function deleteAction(Request $request, Products $product)
 	{
@@ -71,7 +69,6 @@ class ProductController extends Controller
 	 * @param Products $product
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
 	 *
-	 * @Route("/edit/{product}", name="edit")
 	 */
 	public function editAction(Request $request, Products $product) {
 		$form = $this->createForm(Product::class, $product);

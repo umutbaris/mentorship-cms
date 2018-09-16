@@ -13,6 +13,16 @@ category:
 product:
   path: /product  
   controller: App\Controller\ProductController::index
+delete_product:
+  path: /product/delete/{product}
+  controller: App\Controller\ProductController::deleteAction
+edit_product:
+  path: /product/edit/{product}
+  controller: App\Controller\ProductController::editAction
+create_product: 
+  path: /product/create
+  controller: App\Controller\ProductController::createAction
 
-    
+
+
 
