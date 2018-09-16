@@ -49,7 +49,19 @@ class ProductController extends Controller
 	 * @Route("/edit/{Product}", name="edit")
 	 */
 	public function updateAction() {
-
+		$form = $this->createForm(Products::class, $product);
+		$form->handleRequest($request);
+		if ($form->isSubmitted() && $form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$em->flush();
+			// for now
+			return $this->redirectToRoute('edit', [
+				'Product' => $product->getId(),
+			]);
+		}
+		return $this->render('product/index2.html.twig', [
+			'form' => $form->createView()
+		]);
 	}
 
 }
