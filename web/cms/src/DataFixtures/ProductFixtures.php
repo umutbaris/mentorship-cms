@@ -10,7 +10,5 @@ class ProductFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = \Faker\Factory::create();
-
-        echo $faker->name;
     }
 }
