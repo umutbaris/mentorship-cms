@@ -41,4 +41,15 @@ class ProductController extends Controller
 		return $this->redirectToRoute('product');
 	}
 
+	/**
+	 * @param Request  $request
+	 * @param Products $product
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+	 *
+	 * @Route("/edit/{Product}", name="edit")
+	 */
+	public function updateAction() {
+
+	}
+
 }
