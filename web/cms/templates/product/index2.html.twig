@@ -12,9 +12,10 @@
             <table class="table table-bordered table-responsive-md table-striped text-center">
                 <tr>
                     <th class="text-center">Category Id</th>
-                    <th class="text-center">Name</th>
                     <th class="text-center">Remove</th>
+                    <th class="text-center">Description</th>
                     <th class="text-center">Price</th>
+                    <th class="text-center">Currency</th>
                 </tr>
                 {% for product in products %}
                 <tr>
@@ -23,10 +24,11 @@
                     <td class="pt-3-half" contenteditable="true">{{ product.price }}</td>
 
                     <td>
-                         <a href="{{ path('delete', { 'product': product.id }) }}" class="btn btn-danger btn-sm">Delete</a>
                          <a href="{{ path('edit', { 'product': product.id }) }}" class="btn btn-danger btn-sm">Edit</a>
 
-                        </td>
+                         <a href="{{ path('delete', { 'product': product.id }) }}" class="btn btn-danger btn-sm">Delete</a>
+
+                    </td>
                 </tr>
                 {% endfor %}
             </table>

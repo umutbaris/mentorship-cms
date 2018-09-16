@@ -4,9 +4,8 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Products;
-use Doctrine\Common\Persistence\ObjectManager;
+use App\Form\Type\Product;
 use Symfony\Component\HttpFoundation\Request;
-
 
 
 
@@ -20,6 +19,32 @@ class ProductController extends Controller
 		$products = $manager->getRepository('App:Products')->findAll();
 		return $this->render('product/index2.html.twig', [
 			'products' => $products
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @Route("/create", name="create")
+	 */
+	public function createAction(Request $request)
+	{
+		$form = $this->createForm(Product::class);
+		$form->handleRequest($request);
+		if ($form->isSubmitted() && $form->isValid()) {
+			/**
+			 * @var $product Product
+			 */
+			$product = $form->getData();
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($product);
+			$em->flush();
+
+			return $this->redirectToRoute('edit', [
+				'product' => $product->getId(),
+			]);
+		}
+		return $this->render('product/create.html.twig', [
+			'form' => $form->createView()
 		]);
 	}
 
@@ -49,17 +74,16 @@ class ProductController extends Controller
 	 * @Route("/edit/{product}", name="edit")
 	 */
 	public function editAction(Request $request, Products $product) {
-		$form = $this->createForm(Products::class, $product);
+		$form = $this->createForm(Product::class, $product);
 		$form->handleRequest($request);
 		if ($form->isSubmitted() && $form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$em->flush();
-			// for now
-			return $this->redirectToRoute('edit', [
-				'products' => $product->getId(),
-			]);
+
+			return $this->redirectToRoute('product');
+			
 		}
-		return $this->render('product/index2.html.twig', [
+		return $this->render('product/edit.html.twig', [
 			'form' => $form->createView()
 		]);
 	}
