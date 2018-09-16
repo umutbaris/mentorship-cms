@@ -8,10 +8,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 class CategoryFixtures extends Fixture
 {
 	public function load(ObjectManager $manager) {
+		$category = new Categories;
+		$faker = \Faker\Factory::create();
 		
 		for ($i = 0; $i <= 10; $i++) {
-			$category = new Categories;
-			$faker = \Faker\Factory::create();
 			$category->setTitle($faker->colorName);
 			$category->setStatus("active");
 			

@@ -9,12 +9,12 @@ use App\Entity\Categories;
 class ProductFixtures extends Fixture
 {
 	public function load(ObjectManager $manager) {
+		$product = new Products;
+		$faker = \Faker\Factory::create();
 		
 		$categories = $manager->getRepository('App:Categories')->findAll();
 		foreach($categories as $category){
 			for ($i = 0; $i <= 10; $i++) {
-				$product = new Products;		
-				$faker = \Faker\Factory::create();
 				$product->setTitle($faker->word);
 				$product->setDescription($faker->sentence);
 				$product->setPrice($faker->randomDigit);

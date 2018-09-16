@@ -46,9 +46,9 @@ class ProductController extends Controller
 	 * @param Products $product
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
 	 *
-	 * @Route("/edit/{Product}", name="edit")
+	 * @Route("/edit/{product}", name="edit")
 	 */
-	public function updateAction() {
+	public function editAction(Request $request, Products $product) {
 		$form = $this->createForm(Products::class, $product);
 		$form->handleRequest($request);
 		if ($form->isSubmitted() && $form->isValid()) {
@@ -56,7 +56,7 @@ class ProductController extends Controller
 			$em->flush();
 			// for now
 			return $this->redirectToRoute('edit', [
-				'Product' => $product->getId(),
+				'products' => $product->getId(),
 			]);
 		}
 		return $this->render('product/index2.html.twig', [
