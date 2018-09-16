@@ -1,0 +1,37 @@
+{% extends 'dashboard.html.twig' %}
+{% block title %}    {% endblock %}
+
+{% block body %}
+
+<!-- Editable table -->
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+    <div class="card-body">
+        <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                    <th class="text-center">Category Id</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Satus</th>
+                    <th class="text-center">Delete</th>
+                </tr>
+                {% for category in categories %}
+                <tr>
+                    <td class="pt-3-half" contenteditable="false">{{ category.id }}</td>
+                    <td class="pt-3-half" contenteditable="true">{{ category.title }}</td>
+                    <td class="pt-3-half" contenteditable="true">{{ category.status }}</td>
+
+                    <td>
+                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Delete</button></span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Editable table -->
+
+{% endblock %}
