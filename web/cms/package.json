@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "jquery": "^3.5.0",
-        "node-sass": "^4.9.3",
+        "node-sass": "^7.0.0",
         "popper.js": "^1.14.4",
         "sass-loader": "^7.1.0"
     }
